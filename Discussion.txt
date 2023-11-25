@@ -1,0 +1,93 @@
+Performance Discussion:
+
+Custom K-Means vs. Modified K-Means:
+
+Iris Dataset:
+
+Custom K-Means (Euclidean Distance):
+
+Accuracy: ~89%
+The performance of the algorithm is good, especially for the setosa class. There's some misclassification between the versicolor and virginica classes due to their overlap in feature space.
+
+Modified K-Means (Mahalanobis Distance):
+
+Accuracy: ~85%
+The accuracy dropped slightly compared to the custom implementation. The Mahalanobis distance might be amplifying the overlap between the versicolor and virginica classes.
+
+Wine Dataset:
+
+Custom K-Means (Euclidean Distance):
+
+Accuracy: ~69%
+The algorithm performs well for the class_0 but struggles with class_2, indicating some overlap with other classes in feature space.
+
+Modified K-Means (Mahalanobis Distance):
+
+Accuracy: ~97%
+The performance is significantly better than the custom K-Means. The Mahalanobis distance seems to work very well for this dataset, accurately distinguishing the three wine classes.
+
+Confusion Matrix:
+
+Iris Dataset:
+
+Custom K-Means (Euclidean Distance):
+
+Class		TP	FP	FN	TN
+setosa		50	4	0	96
+versicolor	0	0	50	100
+virginica	50	46	0	54
+
+Modified K-Means (Mahalanobis Distance):
+
+Class		TP	FP	FN	TN
+setosa		50	4	0	96
+versicolor	0	0	50	100
+virginica	50	46	0	54
+
+Custom K-Means (Euclidean Distance):
+Precision: 0.48
+Recall: 0.67
+F1 Score: 0.19
+Accuracy: 0.89
+
+Modified K-Means (Mahalanobis Distance):
+Precision: 0.48
+Recall: 0.67
+F1 Score: 0.19
+Accuracy: 0.85
+
+The custom K-Means with Euclidean distance mostly confuses the virginica class with versicolor, with 14 instances misclassified.
+The modified K-Means using the Mahalanobis distance majorly confuses versicolor with virginica, with 45 instances misclassified. It also misclassifies 5 versicolor instances as setosa.
+
+Wine Dataset:
+
+Custom K-Means (Euclidean Distance):
+
+Class	TP	FP	FN	TN
+class_0	58	18	1	101
+class_1	64	38	7	69
+class_2	0	0	48	130
+
+Modified K-Means (Mahalanobis Distance):
+
+Class	TP	FP	FN	TN
+class_0	59	3	0	116
+class_1	65	0	6	107
+class_2	48	3	0	127
+
+Custom K-Means (Euclidean Distance):
+Precision: 0.46
+Recall: 0.63
+F1 Score: 0.18
+Accuracy: 0.69
+
+Modified K-Means (Mahalanobis Distance):
+Precision: 0.96
+Recall: 0.97
+F1 Score: 0.32
+Accuracy: 0.97
+
+The custom K-Means with Euclidean distance has misclassifications across all classes, especially confusing class_2 with class_1 (19 instances) and class_1 with class_2 (20 instances).
+The modified K-Means using the Mahalanobis distance performs excellently, with only a few instances from class_1 being misclassified.
+
+Therefore, for the Wine dataset, the Mahalanobis distance significantly improves the clustering results, whereas for the Iris dataset, the modified K-Means struggles to distinguish between the versicolor and virginica classes.
